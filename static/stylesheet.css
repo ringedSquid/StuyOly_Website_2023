@@ -1,0 +1,32 @@
+
+
+
+
+/* Basic page elements */
+
+/* CONTAINER */ 
+
+#container {
+  position: relative;
+  width: 1280px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+
+#root {
+}
+
+/* INSIDE ROOT */
+.left_col {
+  float: left;
+  width: 830px;
+}
+
+.right_col {
+  float: left;
+  width: 420px;
+  margin-left: 30px;
+}
+
+#footer {
+}
