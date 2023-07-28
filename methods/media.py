@@ -1,8 +1,9 @@
 import random
+import os
 import json
 
 #gets an n amount of random images from specified dir
-def get_images_random(dir, amount):
+def get_images_random(dir: str, amount: int):
     #Check if amount is in bounds
     if (amount < 1):
         return "INVALID_AMT"
@@ -23,7 +24,7 @@ def get_images_random(dir, amount):
     return paths
 
 #gets an n amount of images from a specified dir 
-def get_images_seq(dir, amount):
+def get_images_seq(dir: str, amount: int):
     #Check if amount is in bounds
     if (amount < 1):
         return "INVALID_AMT"
@@ -44,13 +45,16 @@ def get_images_seq(dir, amount):
     return paths
 
 #Gets amount of images in dir
-def get_image_n(dir):
+def get_image_n(dir: str):
     n = 0
     with open(dir + "properties.json", "r") as file:
         n = json.loads(file.read())["image_n"]
         file.close()
     return n
 
-    
+#Get random photo directory
+def get_random_dir(dir: str):
+    dirlist = os.listdir(dir)
+    return (dir + dirlist[random.randint(0, len(dirlist)-1)] + "/")
     
 

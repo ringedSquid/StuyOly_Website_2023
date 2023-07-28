@@ -46,9 +46,22 @@ def format_all(path):
                 vid_n += 1
                 os.rename(ifile, ofile)
 
+            elif (e.lower() == ".json"):
+                pass
+
             else: 
                 print("nil")
                 pass
+
+        #Update properties.json
+        with open(path + dir + "/properties.json", 'w') as wfile:
+            data = {
+                "image_n" : img_n,
+                "video_n" : vid_n,
+            }
+            json.dump(data, wfile)
+            wfile.close()
+
     return
 
 def format_single(path):
@@ -87,9 +100,21 @@ def format_single(path):
             vid_n += 1
             os.rename(ifile, ofile)
 
+        elif (e.lower() == ".json"):
+            pass
+
         else: 
             print("Nil")
             pass
+
+    #Update properties.json
+    with open(path + "/properties.json", 'w') as wfile:
+        data = {
+            "image_n" : img_n,
+            "video_n" : vid_n,
+        }
+        json.dump(data, wfile)
+        wfile.close()
 
     return
 
@@ -97,7 +122,7 @@ def format_single(path):
 if __name__ == "__main__":
     #check if args are valid
     n = len(sys.argv)
-    modes = ['s', 'm']
+    modes = ["-s", "-m"]
     if ((n != 3) or (sys.argv[1] not in modes) or not (os.path.exists(sys.argv[2]))):
         print(
                 '''
@@ -105,16 +130,14 @@ if __name__ == "__main__":
                 USAGE: imageindexer -smuz [PATH TO CONTENT DIRECTORY]
                         -s: single directory)
                         -m: all directories within a directory
-                        -u: update a single directory
-                        -z: update all directories within a directory
                 '''
                 )
         exit()
 
     match sys.argv[1]:
-        case 's':
+        case "-s":
             format_single(sys.argv[2])
-        case 'm':
+        case "-m":
             format_all(sys.argv[2])
         
     #run based on different modes
