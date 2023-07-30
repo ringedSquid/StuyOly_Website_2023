@@ -59,7 +59,7 @@ def format_all(path):
                 "image_n" : img_n,
                 "video_n" : vid_n,
             }
-            json.dump(data, wfile)
+            json.dump(data, wfile, indent = 2)
             wfile.close()
 
     return
@@ -113,7 +113,7 @@ def format_single(path):
             "image_n" : img_n,
             "video_n" : vid_n,
         }
-        json.dump(data, wfile)
+        json.dump(data, wfile, indent = 2)
         wfile.close()
 
     return
